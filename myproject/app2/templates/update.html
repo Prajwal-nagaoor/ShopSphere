@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% block content %}
+<center>
+    <h3>Updata Profile</h3>
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+        
+        <label for="">First Name</label>
+        <input type="text" name="first_name" value="{{request.user.first_name}}"><br>
+        <label for="">last Name</label>
+        <input type="text" name="last_name" value="{{ request.user.last_name }}"><br>
+        <label for="">Emial Id</label>
+        <input type="text" name="email" value="{{ request.user.email }}"><br>
+        <label for="">userName</label>
+        <input type="text" name="username" value="{{ request.user.username }}" readonly><br>
+        <input type="submit" name="" id="">
+        <a href="{% url 'profile' %}">Back</a>
+        
+        
+        </p>
+    </form>
+</center>
+{% endblock content %}

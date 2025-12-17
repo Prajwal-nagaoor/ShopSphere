@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<nav class="navbar" style="background-color: #e3f2fd;">
+  <div class="container-fluid d-flex align-items-center gap-3 flex-wrap">
+
+    <!-- All Products Link -->
+    <a class="nav-link text-white fw-semibold" href="{% url 'home' %}">
+      All Products
+    </a>
+
+    <!-- Category Buttons -->
+    {% for i in all_category %}
+      <form method="get" class="mb-0">
+        <button
+  type="submit"
+  name="cat"
+  value="{{ i }}"
+  class="btn btn-sm category-btn"
+>
+  {{ i }}
+</button>
+      </form>
+    {% endfor %}
+
+  </div>
+</nav>
+
+<div class="main-container">
+    <h1 class="page-title">Our Products</h1>
+    <div class="product-grid">
+        {% if data %}
+        {% for i in data %}
+        <div class="product-card">
+            {% if trend %}
+            <div style="width: 150px; height: 20px; background-color: red; margin: 10px; padding: 10px;">Trending Now!!
+            </div>
+            {% endif %}
+            {% if offer %}
+            <div style="color: red;">Flat 55% off!!</div>
+            {% endif %}
+            <img src="{{ i.product_image.url }}" alt="{{ i.product_name }}">
+            <div class="product-info">
+                <h3 class="product-name">{{ i.product_name }}</h3>
+                <p class="product-category">{{ i.product_category }}</p>
+                <p class="product-desc">{{ i.product_desc }}</p>
+                <p class="product-price">₹{{ i.product_price }}</p>
+                <a href="{% url 'add_cart' i.id %}" class="btn btn-warning">Add to cart</a>
+            </div>
+        </div>
+        {% endfor %}
+        
+        {% else %}
+        <h2>No Items found</h2>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}

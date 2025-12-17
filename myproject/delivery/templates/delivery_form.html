@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% block content %}
+<center>
+    <h2>Delivery form</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit">
+    </form>
+
+    <hr>
+    <h1>Order Detaials</h1><hr><br>
+    {% for i in data %}
+        <h3>{{i.first_name}}//{{i.customer_address}}//{{i.customer_mobile}}</h3>
+        <a href="{% url 'update_order' i.id %}">Update</a>
+        <a href="">Cancel Oreder</a>
+    {% endfor %}
+</center>
+{% endblock content %}

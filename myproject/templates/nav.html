@@ -1,0 +1,83 @@
+<nav class="navbar navbar-dark bg-primary">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <h2 class="mb-0 text-white">SHOPSPHERE</h2>
+    </div>
+
+    <!-- NAV LINKS -->
+    <ul class="navbar-nav d-flex flex-row align-items-center gap-3 mb-0">
+
+      {% if request.user.is_authenticated %}
+        
+        {% if profile %}
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'cart' %}">Cart ({{ cart_count }})</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'profile' %}">
+              Profile ({{ request.user }})
+            </a>
+          </li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Support</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">KnowUs</a></li>
+
+        {% elif cart %}
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'home' %}">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'cart' %}">Cart ({{ cart_count }})</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'profile' %}">Profile ({{ request.user }})</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Support</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">KnowUs</a></li>
+
+        {% else %}
+          <li class="nav-item">
+            <form class="d-flex" method="get">
+              <input class="form-control form-control-sm me-2" type="text" name="q" placeholder="Search">
+              <button class="btn btn-sm btn-info" type="submit">Search</button>
+            </form>
+          </li>
+
+          <li class="nav-item">
+            <form method="get">
+              <button class="btn btn-sm btn-light" name="trending">Trending</button>
+            </form>
+          </li>
+
+          <li class="nav-item">
+            <form method="get">
+              <button class="btn btn-sm btn-warning" name="offer">Offer</button>
+            </form>
+          </li>
+
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'home' %}">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'cart' %}">Cart ({{ cart_count }})</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'profile' %}">Profile ({{ request.user }})</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'add_product' %}">Add Product</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Support</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">KnowUs</a></li>
+        {% endif %}
+
+      {% else %}
+        {% if login_ %}
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'login' %}">Login</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'register' %}">Register</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'home' %}">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Support</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">KnowUs</a></li>
+        {% else %}
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'login' %}">Login</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'register' %}">Register</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'home' %}">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Support</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">KnowUs</a></li>
+        {% endif %}
+      {% endif %}
+
+    </ul>
+
+  </div>
+</nav>
