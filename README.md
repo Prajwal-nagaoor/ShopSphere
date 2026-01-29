@@ -39,5 +39,19 @@ A full-stack **E-Commerce Web Application** built using modern web technologies 
 ---
 
 ## 🗂️ Project Structure
-
+ecommerce/
+│── backend/
+│ ├── products/
+│ ├── users/
+│ ├── orders/
+│ ├── api/
+│ └── settings.py
+│
+│── frontend/
+│ ├── templates/
+│ ├── static/
+│
+│── manage.py
+│── requirements.txt
+│── README.md
 
