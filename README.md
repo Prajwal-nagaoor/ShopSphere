@@ -20,6 +20,24 @@ A full-stack **E-Commerce Web Application** built using modern web technologies 
 - View all users and orders
 
 ---
+## 🧰 Tech Stack
 
+### Frontend
+- HTML5  
+- CSS3  
+- Bootstrap  
+- JavaScript (AJAX / Fetch API)
+
+### Backend
+- Python  
+- Django Framework  
+- Django REST Framework (DRF)
+
+### Database
+- SQLite (can be easily switched to PostgreSQL/MySQL)
+
+---
+
+## 🗂️ Project Structure
 
 
