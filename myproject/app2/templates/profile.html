@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="profile-page">
+  <div class="profile-card card">
+    <div class="profile-header">
+      <div class="avatar-container">
+        <div class="avatar">{{ request.user.username|slice:":1"|upper }}</div>
+        <div class="avatar-overlay">Change</div>
+      </div>
+    </div>
+
+    <div class="profile-body">
+      <h2>{{ request.user.username }}</h2>
+      <p class="profile-role">Registered User</p>
+
+      <div class="profile-info">
+        <div class="profile-item">
+          <span class="icon">👤</span>
+          <span class="label">First Name</span>
+          <span class="value">{{ request.user.first_name }}</span>
+        </div>
+        <div class="profile-item">
+          <span class="icon">👤</span>
+          <span class="label">Last Name</span>
+          <span class="value">{{ request.user.last_name }}</span>
+        </div>
+        <div class="profile-item">
+          <span class="icon">📧</span>
+          <span class="label">Email</span>
+          <span class="value">{{ request.user.email }}</span>
+        </div>
+      </div>
+
+      <div class="btn-group profile-btns">
+        <a href="{% url 'update' %}" class="btn primary">Update Profile</a>
+        <a href="" class="btn secondary">Change Password</a>
+        <a href="{% url 'logout' %}" class="btn cancel">Logout</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+{{request.user}}
+{% endblock content %}

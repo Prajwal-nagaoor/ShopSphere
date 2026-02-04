@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% block content %}
+<center>
+    <h3>Register Here</h3>
+    {% if username_exits %}
+        <div><h4>Username is already exits!!. please enter differemt username</h4></div>
+    {% endif %}
+    {% if pass_not_match %}
+        <div><h4>the password and confirm password is not matching.peasce try again</h4></div>
+    {% endif %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="">First Name</label>
+        <input type="text" name="first_name"><br>
+        <label for="">last Name</label>
+        <input type="text" name="last_name"><br>
+        <label for="">Emial Id</label>
+        <input type="text" name="email"><br>
+        <label for="">userName</label>
+        <input type="text" name="username"><br>
+        <label for="">password</label>
+        <input type="text" name="password"><br>
+        <label for="">confirm password</label>
+        <input type="text" name="conf_pass"><br>
+        <input type="submit">
+        <p>Already i have account <a href="{% url 'login' %}">Login Here</a>
+        </p>
+    </form>
+</center>
+{% endblock content %}
